@@ -3,7 +3,7 @@ Author: ali7ali
 Contributors: ali7ali
 Tags: single-product, elementor,  woocommerce, product, page builder, landing page, drag-and-drop, widget, alpha, premium
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GPLv3
