@@ -7,6 +7,10 @@
  * Version:     1.0.0
  * Text Domain: alpha-single-product-for-elementor
  * License: GPLv3
+ * 
+ * WC tested up to: 6.4.1
+ * Elementor tested up to: 3.6.4
+ * Elementor Pro tested up to: 3.6.5
 */
 
 /* Copyright 2021 Ali Ali (email : ali.abdalhadi.ali@gmail.com) 
