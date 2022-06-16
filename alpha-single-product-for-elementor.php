@@ -4,7 +4,7 @@
  * Description: Single WooCommerce Product Widget Addon For Elementor.
  * Author:      Ali Ali
  * Author URI:  https://github.com/Ali-A-Ali
- * Version:     1.0.0
+ * Version:     1.0.1
  * Text Domain: alpha-single-product-for-elementor
  * License: GPLv3
  * 
