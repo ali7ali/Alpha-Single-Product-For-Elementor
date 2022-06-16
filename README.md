@@ -2,7 +2,7 @@
 
 [![WP](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin Last Updated]9https://img.shields.io/wordpress/plugin/last-updated/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![WordPress Plugin Last Updated]https://img.shields.io/wordpress/plugin/last-updated/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
