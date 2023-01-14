@@ -29,7 +29,6 @@ License: GPLv3
 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-
 Alpha Single Product For Elementor is an addon plugin that offers the ability to add a single woocommerce product anywhere in your website with easy customized appearance features for WordPress.
 
 == Description ==
