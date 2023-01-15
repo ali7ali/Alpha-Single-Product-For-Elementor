@@ -15,7 +15,7 @@ Author: ali7ali
 
 Contributors: ali7ali
 
-Tags: single-product, elementor,  woocommerce, product, page builder, landing page, drag-and-drop, widget, alpha, premium
+Tags: single-product, elementor, woocommerce, product, page builder, landing page, drag-and-drop, widget, alpha, premium
 
 Requires at least: 5.0
 
@@ -29,32 +29,32 @@ License: GPLv3
 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-
 Alpha Single Product For Elementor is an addon plugin that offers the ability to add a single woocommerce product anywhere in your website with easy customized appearance features for WordPress.
 
 == Description ==
 This addon plugin offers the ability to add a single woocommerce product anywhere in your website using Elementor.
 
-Plugin features 
- * Highly customized
- * Direct search for a product
- * Responsive Live Editing
+Plugin features
 
-Elementor Website  Builder comes with an exclusive toolset, that lets you create a truly responsive website in a whole new and visual way. From different font sizes, padding, and margin per device, to reverse column ordering, this is the most powerful mobile site builder for creating perfect responsive websites.
+- Highly customized
+- Direct search for a product
+- Responsive Live Editing
 
-== Installation == 
+Elementor Website Builder comes with an exclusive toolset, that lets you create a truly responsive website in a whole new and visual way. From different font sizes, padding, and margin per device, to reverse column ordering, this is the most powerful mobile site builder for creating perfect responsive websites.
+
+== Installation ==
 
 = Minimum Requirements =
-	
-* WordPress 5.0 or greater
-* PHP version 5.6 or greater
-* MySQL version 5.0 or greater
+
+- WordPress 5.0 or greater
+- PHP version 5.6 or greater
+- MySQL version 5.0 or greater
 
 = We recommend your host supports: =
 
-* PHP version 7.0 or greater
-* MySQL version 5.6 or greater
-* WordPress Memory limit of 64 MB or greater (128 MB or higher is preferred)
+- PHP version 7.0 or greater
+- MySQL version 5.6 or greater
+- WordPress Memory limit of 64 MB or greater (128 MB or higher is preferred)
 
 = Installation =
 
@@ -70,5 +70,6 @@ Then follow these steps to install the plugin:
 5. Click the Activate button to activate the plugin.
 
 Manual or using sFTP install:
- 1. Upload 'plugin-directory' to the '/wp-content/plugins/' directory 
- 2. Activate the plugin through the 'Plugins' screen in WordPress 
+
+1.  Upload 'plugin-directory' to the '/wp-content/plugins/' directory
+2.  Activate the plugin through the 'Plugins' screen in WordPress
