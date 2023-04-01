@@ -10,9 +10,9 @@
  * Domain Path: /languages
  * License: GPLv3
  * 
- * WC tested up to: 7.3.0
- * Elementor tested up to: 3.10.0
- * Elementor Pro tested up to: 3.10.1
+ * WC tested up to: 7.5.1
+ * Elementor tested up to: 3.12.0
+ * Elementor Pro tested up to: 3.12.0
  * 
  * @package alpha-price-table-for-elementor
  */
@@ -45,5 +45,6 @@ define('ALPHASP_PL_PATH', plugin_dir_path(ALPHASP_ADDONS_PL_ROOT));
 define('ALPHASP_PL_ASSETS', trailingslashit(ALPHASP_PL_URL . 'assets'));
 define('ALPHASP_PL_INCLUDE', trailingslashit(ALPHASP_PL_PATH . 'include'));
 define('ALPHASP_PLUGIN_BASE', plugin_basename(ALPHASP_ADDONS_PL_ROOT));
+
 // Required File
 include(ALPHASP_PL_INCLUDE . '/class-alpha-single-product.php');
