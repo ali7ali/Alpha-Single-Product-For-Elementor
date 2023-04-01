@@ -10,14 +10,23 @@
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 
 === Alpha Single Product For Elementor ===
+
 Author: ali7ali
+
 Contributors: ali7ali
+
 Tags: single-product, elementor, woocommerce, product, page builder, landing page, drag-and-drop, widget, alpha, premium
+
 Requires at least: 5.0
+
 Tested up to: 6.0
+
 Requires PHP: 5.6
+
 Stable tag: 1.0.0
+
 License: GPLv3
+
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Alpha Single Product For Elementor is an addon plugin that offers the ability to add a single woocommerce product anywhere in your website with easy customized appearance features for WordPress.
