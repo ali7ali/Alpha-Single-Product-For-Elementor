@@ -81,12 +81,26 @@ class Alpha_SP_Widget extends Widget_Base
         );
 
         $this->add_control(
+            'check_demo',
+            [
+                'type' => Controls_Manager::RAW_HTML,
+                'raw' => sprintf(
+                    /* translators: 1: Demo link open tag, 2: Link close tag. */
+                    esc_html__('Check this widget demo %1$shere%2$s.', 'alpha-single-product-for-elementor'),
+                    '<a href="https://alphatrio.net/alpha-single-product-for-elementor/" target="_blank">',
+                    '</a>'
+                ),
+                'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+            ]
+        );
+
+        $this->add_control(
             'alphasp_product_id',
             [
                 'label' => __('Select Product', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::SELECT2,
                 'label_block' => true,
-                'multiple' => true,
+                'multiple' => false,
                 'options' => $this->alphasp_post_name('product'),
             ]
         );
@@ -100,6 +114,19 @@ class Alpha_SP_Widget extends Widget_Base
                 'label' => esc_html__('Product Settings', 'alpha-single-product-for-elementor'),
             ]
         );
+
+        $this->add_control(
+            'product_info_location',
+            [
+                'label' => esc_html__('Title, Price, and Button Location', 'alpha-single-product-for-elementor'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Under', 'alpha-single-product-for-elementor'),
+                'label_off' => esc_html__('Above', 'alpha-single-product-for-elementor'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
         $this->add_control(
             'hide_product_title',
             [
@@ -107,6 +134,7 @@ class Alpha_SP_Widget extends Widget_Base
                 'type'      => Controls_Manager::SWITCHER,
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-info .sp-product-title' => 'display: none;',
+                    '{{WRAPPER}} .sp-product-info2 .sp-product-title2' => 'display: none;',
                 ],
             ]
         );
@@ -118,6 +146,7 @@ class Alpha_SP_Widget extends Widget_Base
                 'type'      => Controls_Manager::SWITCHER,
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-info .sp-product-price' => 'display: none;',
+                    '{{WRAPPER}} .sp-product-info2 .sp-product-price2' => 'display: none;',
                 ],
             ]
         );
@@ -151,10 +180,13 @@ class Alpha_SP_Widget extends Widget_Base
         $this->add_responsive_control(
             'product_image_size_width',
             [
-                'label' => __('Width', 'alpha-single-product-for-elementor'),
+                'label' => __('Width PX', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::TEXT,
+                'default' => '300',
                 'selectors' => [
-                    '{{WRAPPER}} .sp-product-image a img' => 'width: {{VALUE}};',
+                    '{{WRAPPER}} .sp-product-image a img' => 'width: {{VALUE}}px;',
+                    '{{WRAPPER}} .sp-product-action' => 'max-width: {{VALUE}}px;',
+                    '{{WRAPPER}} .sp-product-action2' => 'max-width: {{VALUE}}px;',
                 ],
             ]
         );
@@ -162,10 +194,11 @@ class Alpha_SP_Widget extends Widget_Base
         $this->add_responsive_control(
             'product_image_size_height',
             [
-                'label' => __('Height', 'alpha-single-product-for-elementor'),
+                'label' => __('Height PX', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::TEXT,
+                'default' => '300',
                 'selectors' => [
-                    '{{WRAPPER}} .sp-product-image a img' => 'height: {{VALUE}};',
+                    '{{WRAPPER}} .sp-product-image a img' => 'height: {{VALUE}}px;',
                 ],
             ]
         );
@@ -178,6 +211,47 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Style', 'alpha-single-product-for-elementor'),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'product_border',
+                'selector' => '{{WRAPPER}} .sp-product-wrapper',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'product_border_radius',
+            [
+                'label' => __('Border Radius', 'alpha-single-product-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'unit' => 'px',
+                    'isLinked' => 'true',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .sp-product-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'product_border_color',
+            [
+                'label' => __('Border Color', 'alpha-single-product-for-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'default' =>  '#121212',
+                'selectors' => [
+                    '{{WRAPPER}} .sp-product-wrapper' => 'border-color: {{VALUE}};',
+                ],
             ]
         );
 
@@ -220,7 +294,7 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'name' => 'product_title_typography',
                 'scheme' => Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .sp-product-title a',
+                'selector' => '{{WRAPPER}} .sp-product-title a,{{WRAPPER}} .sp-product-title2 a',
             ]
         );
 
@@ -229,9 +303,10 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Title Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' =>  '#fff',
+                'default' =>  '#121212',
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-title a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .sp-product-title2 a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -241,9 +316,10 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Title Hover Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#FFD100',
+                'default' => '#EFC24F',
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-title a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .sp-product-title2 a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -254,8 +330,17 @@ class Alpha_SP_Widget extends Widget_Base
                 'label' => __('Margin', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
+                'default' => [
+                    'top' => 1,
+                    'right' => 1,
+                    'bottom' => 1,
+                    'left' => 1,
+                    'unit' => 'px',
+                    'isLinked' => 'true',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .sp-product-title2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -275,9 +360,10 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Price Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#fff',
+                'default' => '#121212',
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-price span' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .sp-product-price2 span' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -287,7 +373,7 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'name' => 'product_price_typography',
                 'scheme' => Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .sp-product-price span',
+                'selector' => '{{WRAPPER}} .sp-product-price span, {{WRAPPER}} .sp-product-price2 span',
             ]
         );
 
@@ -297,8 +383,17 @@ class Alpha_SP_Widget extends Widget_Base
                 'label' => __('Margin', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
+                'default' => [
+                    'top' => 1,
+                    'right' => 1,
+                    'bottom' => 1,
+                    'left' => 1,
+                    'unit' => 'px',
+                    'isLinked' => 'true',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .sp-product-price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .sp-product-price2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -340,7 +435,7 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Text Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '',
+                'default' => '#3A3A3A',
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button a' => 'color: {{VALUE}};',
                 ],
@@ -365,6 +460,7 @@ class Alpha_SP_Widget extends Widget_Base
                     'type' => Color::get_type(),
                     'value' => Color::COLOR_4,
                 ],
+                'default' => '#EFC24F',
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button a' => 'background-color: {{VALUE}};',
                 ],
@@ -386,8 +482,28 @@ class Alpha_SP_Widget extends Widget_Base
                 'label' => __('Border Radius', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => 10,
+                    'right' => 10,
+                    'bottom' => 10,
+                    'left' => 10,
+                    'unit' => 'px',
+                    'isLinked' => 'true',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_border_color',
+            [
+                'label' => __('Border Color', 'alpha-single-product-for-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'default' =>  '#121212',
+                'selectors' => [
+                    '{{WRAPPER}} .sp-cart-button a' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -398,6 +514,14 @@ class Alpha_SP_Widget extends Widget_Base
                 'label' => __('Button Padding', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => 10,
+                    'right' => 10,
+                    'bottom' => 10,
+                    'left' => 10,
+                    'unit' => 'px',
+                    'isLinked' => 'true',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -410,6 +534,14 @@ class Alpha_SP_Widget extends Widget_Base
                 'label' => __('Button Margin', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => 18,
+                    'right' => 10,
+                    'bottom' => 10,
+                    'left' => 10,
+                    'unit' => 'px',
+                    'isLinked' => 'true',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -430,6 +562,7 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Text Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
+                'default' => '#FFFFFF',
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button a' => 'color: {{VALUE}};',
                 ],
@@ -441,6 +574,7 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Background Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
+                'default' => '#121212',
                 'selectors' => [
                     '{{WRAPPER}} .sp-cart-button a:hover' => 'background-color: {{VALUE}};',
                 ],
@@ -525,7 +659,7 @@ class Alpha_SP_Widget extends Widget_Base
             'posts_per_page'        => $per_page,
         );
 
-        $args['post__in'] = $settings['alphasp_product_id'];
+        $args['p'] = $settings['alphasp_product_id'];
 
         // Action Button
         $this->add_render_attribute('action_btn_attr', 'class', 'alpha-sp-action-btn-area');
@@ -560,13 +694,23 @@ class Alpha_SP_Widget extends Widget_Base
                                 <?php woocommerce_template_loop_product_thumbnail(); ?>
                             </a>
                         </div>
-                        <div class="sp-product-action">
-                            <div class="sp-product-info">
-                                <h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                                <div class="sp-product-price"><?php woocommerce_template_loop_price(); ?></div>
+                        <?php if ('yes' !== $settings['product_info_location']) : ?>
+                            <div class="sp-product-action">
+                                <div class="sp-product-info">
+                                    <h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                    <div class="sp-product-price"><?php woocommerce_template_loop_price(); ?></div>
+                                </div>
+                                <div <?php echo $cart_action_classes; ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
                             </div>
-                            <div <?php echo $cart_action_classes; ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
-                        </div>
+                        <?php else : ?>
+                            <div class="sp-product-action2">
+                                <div class="sp-product-info2">
+                                    <h4 class="sp-product-title2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                    <div class="sp-product-price2"><?php woocommerce_template_loop_price(); ?></div>
+                                </div>
+                                <div <?php echo $cart_action_classes; ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <!--Product End-->
                 <?php endwhile;

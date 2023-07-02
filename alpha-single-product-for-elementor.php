@@ -2,17 +2,17 @@
 
 /**
  * Plugin Name: Alpha Single Product For Elementor
+ * Plugin URI: https://alphatrio.net
  * Description: Single WooCommerce Product Widget Addon For Elementor.
  * Author:      Ali Ali
  * Author URI:  https://github.com/Ali7Ali
- * Version:     1.0.2
+ * Version:     1.0.3
  * Text Domain: alpha-single-product-for-elementor
  * Domain Path: /languages
  * License: GPLv3
  * 
- * WC tested up to: 7.5.1
- * Elementor tested up to: 3.12.0
- * Elementor Pro tested up to: 3.12.0
+ * WC tested up to: 7.8.1
+ * Elementor tested up to: 3.14.1
  * 
  * @package alpha-price-table-for-elementor
  */
@@ -38,7 +38,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-define('ALPHASP_VERSION', '1.0.2');
+define('ALPHASP_VERSION', '1.0.3');
 define('ALPHASP_ADDONS_PL_ROOT', __FILE__);
 define('ALPHASP_PL_URL', plugins_url('/', ALPHASP_ADDONS_PL_ROOT));
 define('ALPHASP_PL_PATH', plugin_dir_path(ALPHASP_ADDONS_PL_ROOT));

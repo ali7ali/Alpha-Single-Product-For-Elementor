@@ -19,11 +19,11 @@ Tags: single-product, elementor, woocommerce, product, page builder, landing pag
 
 Requires at least: 5.0
 
-Tested up to: 6.2
+Tested up to: 6.2.2
 
 Requires PHP: 5.6
 
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 License: GPLv3
 
@@ -41,6 +41,17 @@ Plugin features
 - Responsive Live Editing
 
 Elementor Website Builder comes with an exclusive toolset, that lets you create a truly responsive website in a whole new and visual way. From different font sizes, padding, and margin per device, to reverse column ordering, this is the most powerful mobile site builder for creating perfect responsive websites.
+
+= Demo =
+Check this widget demo here [here](https://alphatrio.net/alpha-single-product-for-elementor/).
+
+= Contributing and reporting bugs =
+
+You can contribute code to this plugin via GitHub: [https://github.com/ali7ali/Alpha-Single-Product-For-Elementor](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor)
+
+= Support =
+
+Use the WordPress.org forums for community support. If you spot a bug, you can of course log it on [Github](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor/issues/new/choose) instead where we can act upon it more efficiently.
 
 == Installation ==
 
@@ -76,5 +87,5 @@ Manual or using sFTP install:
 
 == Upgrade Notice ==
 
-= 1.0.2 =
-Update deprecated functions.
+= 1.0.3 =
+Minor improvements and adding a demo.
