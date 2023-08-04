@@ -11,8 +11,8 @@
  * Domain Path: /languages
  * License: GPLv3
  * 
- * WC tested up to: 7.8.1
- * Elementor tested up to: 3.14.1
+ * WC tested up to: 7.9.0
+ * Elementor tested up to: 3.15.1
  * 
  * @package alpha-price-table-for-elementor
  */

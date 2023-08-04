@@ -19,7 +19,7 @@ Tags: single-product, elementor, woocommerce, product, page builder, landing pag
 
 Requires at least: 5.0
 
-Tested up to: 6.2.2
+Tested up to: 6.2.3
 
 Requires PHP: 5.6
 
