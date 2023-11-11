@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 final class Alpha_Sinlge_Product_For_Elementor
 {
     const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
-    const MINIMUM_PHP_VERSION = '5.6';
+    const MINIMUM_PHP_VERSION = '7.3';
     /**
      * Self instance.
      *

@@ -17,11 +17,11 @@ Contributors: ali7ali
 
 Tags: single-product, elementor, woocommerce, product, page builder, landing page, drag-and-drop, widget, alpha, premium
 
-Requires at least: 5.0
+Requires at least: 6.0
 
-Tested up to: 6.3
+Tested up to: 6.4
 
-Requires PHP: 5.6
+Requires PHP: 7.3
 
 Stable tag: 1.0.4
 
@@ -57,8 +57,8 @@ Use the WordPress.org forums for community support. If you spot a bug, you can o
 
 = Minimum Requirements =
 
-- WordPress 5.0 or greater
-- PHP version 5.6 or greater
+- WordPress 6.0 or greater
+- PHP version 7.3 or greater
 - MySQL version 5.0 or greater
 
 = We recommend your host supports: =
