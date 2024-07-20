@@ -1,36 +1,59 @@
 <?php
 
-/**
- * Main plugin class
- *
- * @package alpha-price-table-for-elementor
- *  */
+namespace Elementor_Alpha_Single_Product_Addon;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
 /**
- * Class Alpha_Sinlge_Product_For_Elementor
+ * Alpha_Single_Product_For_Elementor class.
+ *
+ * The main class that initiates and runs the addon.
+ *
+ * @since 1.0.0
  */
-final class Alpha_Sinlge_Product_For_Elementor
+final class Alpha_Single_Product_For_Elementor
 {
-    const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
-    const MINIMUM_PHP_VERSION = '7.3';
     /**
-     * Self instance.
+     * Minimum Elementor Version
      *
-     * @var null Self instance
+     * @since 1.0.0
+     * @var string Minimum Elementor version required to run the addon.
+     */
+    const MINIMUM_ELEMENTOR_VERSION = '3.21.0';
+
+    /**
+     * Minimum PHP Version
+     *
+     * @since 1.0.0
+     * @var string Minimum PHP version required to run the addon.
+     */
+    const MINIMUM_PHP_VERSION = '7.4';
+
+    /**
+     * Instance
+     *
+     * @since 1.0.0
+     * @access private
+     * @static
+     * @var \Elementor_Alpha_Single_Product_Addon\Alpha_Single_Product_For_Elementor The single instance of the class.
      */
     private static $_instance = null;
 
     /**
-     * Return self instance.
+     * Instance
      *
-     * @return Alpha_Sinlge_Product_For_Elementor|null
+     * Ensures only one instance of the class is loaded or can be loaded.
+     *
+     * @since 1.0.0
+     * @access public
+     * @static
+     * @return \Elementor_Alpha_Single_Product_Addon\Alpha_Single_Product_For_Elementor An instance of the class.
      */
     public static function instance()
     {
+
         if (is_null(self::$_instance)) {
             self::$_instance = new self();
         }
@@ -38,26 +61,15 @@ final class Alpha_Sinlge_Product_For_Elementor
     }
 
     /**
-     * Alpha_Sinlge_Product_For_Elementor constructor.
+     * Constructor
+     *
+     * Perform some compatibility checks to make sure basic requirements are meet.
+     * If all compatibility checks pass, initialize the functionality.
+     *
+     * @since 1.0.0
+     * @access public
      */
     public function __construct()
-    {
-        add_action('plugins_loaded', array($this, 'on_plugins_loaded'));
-        add_action('elementor/frontend/after_enqueue_styles', array($this, 'plugin_css'));
-    }
-
-    /**
-     * Load the plugin text domain.
-     */
-    public function i18n()
-    {
-        load_plugin_textdomain('alpha-single-product-for-elementor');
-    }
-
-    /**
-     * On plugins load check for compatibility.
-     */
-    public function on_plugins_loaded()
     {
         if ($this->is_compatible()) {
             add_action('elementor/init', [$this, 'init']);
@@ -65,9 +77,20 @@ final class Alpha_Sinlge_Product_For_Elementor
     }
 
     /**
-     * Check if is compatible.
+     * Load the plugin text domain.
+     */
+    public function i18n()
+    {
+        load_plugin_textdomain('alpha-single-product-for-elementor', false, ALPHASP_PL_LANGUAGES);
+    }
+
+    /**
+     * Compatibility Checks
      *
-     * @return bool
+     * Checks whether the site meets the addon requirement.
+     *
+     * @since 1.0.0
+     * @access public
      */
     public function is_compatible()
     {
@@ -100,7 +123,6 @@ final class Alpha_Sinlge_Product_For_Elementor
             return false;
         }
 
-
         return true;
     }
 
@@ -112,8 +134,8 @@ final class Alpha_Sinlge_Product_For_Elementor
 
         $this->i18n();
 
-        // Add Plugin actions.
-        add_action('elementor/widgets/register', array($this, 'init_widgets'));
+        add_action('elementor/frontend/after_enqueue_styles', [$this, 'frontend_styles']);
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
 
         add_filter('wc_add_to_cart_params', function ($params) {
             // if we're on a WooCommerce page 
@@ -129,38 +151,34 @@ final class Alpha_Sinlge_Product_For_Elementor
         });
     }
 
-    /*
-    * Check Plugins is Installed or not
-    */
-    public function is_plugins_active($pl_file_path = NULL)
-    {
-        $installed_plugins_list = get_plugins();
-        return isset($installed_plugins_list[$pl_file_path]);
-    }
-
     /**
-     * Admin notice.
-     * For missing elementor.
+     * Admin notice
+     *
+     * Warning when the site doesn't have Elementor installed or activated.
+     *
+     * @since 1.0.0
+     * @access public
      */
     public function admin_notice_missing_main_plugin()
     {
         if (isset($_GET['activate'])) unset($_GET['activate']);
-        $elementor = 'elementor/elementor.php';
-        if ($this->is_plugins_active($elementor)) {
-            if (!current_user_can('activate_plugins')) {
-                return;
-            }
+
+        $message = sprintf(
+            /* translators: 1: Plugin name 2: Elementor */
+            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'alpha-single-product-for-elementor'),
+            '<strong>' . esc_html__('Alpha Single Product Widget for Elementor', 'alpha-single-product-for-elementor') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'alpha-single-product-for-elementor') . '</strong>'
+        );
+
+        $elementor     = 'elementor/elementor.php';
+        $pathpluginurl = \WP_PLUGIN_DIR . '/' . $elementor;
+        $isinstalled   = file_exists($pathpluginurl);
+        // If installed but didn't load
+        if ($isinstalled && !did_action('elementor/loaded')) {
             $activation_url = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $elementor . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $elementor);
-            /* translators: 1: Just text decoration 2: Just text decoration */
-            $message = sprintf(__('%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s"Elementor"%2$s plugin to be active. Please activate Elementor to continue.', 'alpha-single-product-for-elementor'), '<strong>', '</strong>');
             $button_text = esc_html__('Activate Elementor', 'alpha-single-product-for-elementor');
         } else {
-            if (!current_user_can('activate_plugins')) {
-                return;
-            }
             $activation_url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=elementor'), 'install-plugin_elementor');
-            /* translators: 1: Just text decoration 2: Just text decoration */
-            $message = sprintf(__('%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s"Elementor"%2$s plugin to be installed and activated. Please install Elementor to continue.', 'alpha-single-product-for-elementor'), '<strong>', '</strong>');
             $button_text = esc_html__('Install Elementor', 'alpha-single-product-for-elementor');
         }
         $button = '<p><a href="' . $activation_url . '" class="button-primary">' . $button_text . '</a></p>';
@@ -168,28 +186,33 @@ final class Alpha_Sinlge_Product_For_Elementor
     }
 
     /**
-     * Admin notice.
-     * For missing woocommerce.
+     * Admin notice
+     *
+     * Warning when the site doesn't have WooCommerce installed or activated.
+     *
+     * @since 1.0.0
+     * @access public
      */
     public function admin_notice_missing_woocommerce()
     {
         if (isset($_GET['activate'])) unset($_GET['activate']);
-        $woocommerce = 'woocommerce/woocommerce.php';
-        if ($this->is_plugins_active($woocommerce)) {
-            if (!current_user_can('activate_plugins')) {
-                return;
-            }
+
+        $message = sprintf(
+            /* translators: 1: Plugin name 2: Elementor */
+            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'alpha-single-product-for-elementor'),
+            '<strong>' . esc_html__('Alpha Single Product Widget for Elementor', 'alpha-single-product-for-elementor') . '</strong>',
+            '<strong>' . esc_html__('WooCommerce', 'alpha-single-product-for-elementor') . '</strong>'
+        );
+
+        $woocommerce     = 'woocommerce/woocommerce.php';
+        $pathpluginurl = \WP_PLUGIN_DIR . '/' . $woocommerce;
+        $isinstalled   = file_exists($pathpluginurl);
+        // If installed but didn't load
+        if ($isinstalled && !class_exists('woocommerce')) {
             $activation_url = wp_nonce_url('plugins.php?action=activate&amp;plugin=' . $woocommerce . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $woocommerce);
-            /* translators: 1: Just text decoration 2: Just text decoration */
-            $message = sprintf(__('%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s"WooCommerce"%2$s plugin to be active. Please activate WooCommerce to continue.', 'alpha-single-product-for-elementor'), '<strong>', '</strong>');
             $button_text = esc_html__('Activate WooCommerce', 'alpha-single-product-for-elementor');
         } else {
-            if (!current_user_can('activate_plugins')) {
-                return;
-            }
             $activation_url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=woocommerce'), 'install-plugin_woocommerce');
-            /* translators: 1: Just text decoration 2: Just text decoration */
-            $message = sprintf(__('%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s"WooCommerce"%2$s plugin to be installed and activated. Please install WooCommerce to continue.', 'alpha-single-product-for-elementor'), '<strong>', '</strong>');
             $button_text = esc_html__('Install WooCommerce', 'alpha-single-product-for-elementor');
         }
         $button = '<p><a href="' . $activation_url . '" class="button-primary">' . $button_text . '</a></p>';
@@ -197,8 +220,12 @@ final class Alpha_Sinlge_Product_For_Elementor
     }
 
     /**
-     * Admin notice.
-     * For minimum Elementor version required.
+     * Admin notice
+     *
+     * Warning when the site doesn't have a minimum required Elementor version.
+     *
+     * @since 1.0.0
+     * @access public
      */
     public function admin_notice_minimum_elementor_version()
     {
@@ -217,8 +244,12 @@ final class Alpha_Sinlge_Product_For_Elementor
     }
 
     /**
-     * Admin notice.
-     * For minimum PHP version required.
+     * Admin notice
+     *
+     * Warning when the site doesn't have a minimum required PHP version.
+     *
+     * @since 1.0.0
+     * @access public
      */
     public function admin_notice_minimum_php_version()
     {
@@ -226,9 +257,10 @@ final class Alpha_Sinlge_Product_For_Elementor
         if (isset($_GET['activate'])) unset($_GET['activate']);
 
         $message = sprintf(
-            /* translators: 1: Plugin name 2: Required PHP version */
-            esc_html__('"%1$s" requires PHP version %2$s or greater.', 'alpha-single-product-for-elementor'),
-            '<strong>' . esc_html__('Alpha Single Product Widget', 'alpha-single-product-for-elementor') . '</strong>',
+            /* translators: 1: Plugin name 2: PHP 3: Required PHP version */
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'alpha-single-product-for-elementor'),
+            '<strong>' . esc_html__('Alpha Single Product Widget for Elementor', 'alpha-single-product-for-elementor') . '</strong>',
+            '<strong>' . esc_html__('PHP', 'alpha-single-product-for-elementor') . '</strong>',
             self::MINIMUM_PHP_VERSION
         );
 
@@ -238,24 +270,25 @@ final class Alpha_Sinlge_Product_For_Elementor
     /**
      * Loading plugin css.
      */
-    public function plugin_css()
+    public function frontend_styles()
     {
         wp_enqueue_style('alphasp-widget', ALPHASP_PL_ASSETS . 'css/alpha-sp-widget.css', '', ALPHASP_VERSION);
     }
 
     /**
-     * Register the plugin widget.
+     * Register Widgets
      *
-     * @param object $widgets_manager Elementor widgets object.
+     * Load widgets files and register new Elementor widgets.
      *
-     * @throws Exception File.
+     * Fired by `elementor/widgets/register` action hook.
+     *
+     * @param \Elementor\Widgets_Manager $widgets_manager Elementor widgets manager.
      */
-    public function init_widgets($widgets_manager)
+    public function register_widgets($widgets_manager)
     {
         // Include Widget files
-        include(ALPHASP_PL_INCLUDE . '/class-alpha-single-product-widget.php');
+        require_once ALPHASP_PL_INCLUDE . '/class-alpha-single-product-widget.php';
         // Register widget
-        $widgets_manager->register(new \Elementor\Alpha_SP_Widget());
+        $widgets_manager->register(new \Elementor_Alpha_Single_Product_Addon\Alpha_SP_Widget());
     }
 }
-Alpha_Sinlge_Product_For_Elementor::instance();

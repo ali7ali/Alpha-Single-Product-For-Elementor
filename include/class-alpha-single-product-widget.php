@@ -1,12 +1,16 @@
 <?php
 
+namespace Elementor_Alpha_Single_Product_Addon;
+
+if (!defined('ABSPATH')) {
+    exit; // If this file is called directly, abort.
+}
+
 /**
  * Alpha Single Product Widget.
  *
- * @package alpha-single-product-for-elementor
  *  */
 
-namespace Elementor;
 
 // Elementor Classes.
 use Elementor\Widget_Base;
@@ -15,10 +19,6 @@ use Elementor\Core\Schemes\Color;
 use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-
-if (!defined('ABSPATH')) {
-    exit; // If this file is called directly, abort.
-}
 
 /**
  * Class Alpha_SP_Widget
@@ -119,7 +119,7 @@ class Alpha_SP_Widget extends Widget_Base
             'product_info_location',
             [
                 'label' => esc_html__('Title, Price, and Button Location', 'alpha-single-product-for-elementor'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'type' => Controls_Manager::SWITCHER,
                 'label_on' => esc_html__('Under', 'alpha-single-product-for-elementor'),
                 'label_off' => esc_html__('Above', 'alpha-single-product-for-elementor'),
                 'return_value' => 'yes',
