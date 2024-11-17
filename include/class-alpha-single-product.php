@@ -81,7 +81,7 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function i18n()
     {
-        load_plugin_textdomain('alpha-single-product-for-elementor', false, ALPHASP_PL_LANGUAGES);
+        load_plugin_textdomain('alpha-single-product-for-elementor', false, ALPHASP_PLUGIN_LANGUAGES);
     }
 
     /**
@@ -94,7 +94,6 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function is_compatible()
     {
-
         // Check if Elementor installed and activated
         if (!did_action('elementor/loaded')) {
             add_action('admin_notices', [$this, 'admin_notice_missing_main_plugin']);
@@ -116,9 +115,7 @@ final class Alpha_Single_Product_For_Elementor
         /**
          * Check if WooCommerce is activated
          */
-        if (class_exists('woocommerce')) {
-            return true;
-        } else {
+        if (!class_exists('WooCommerce')) {
             add_action('admin_notices', [$this, 'admin_notice_missing_woocommerce']);
             return false;
         }
@@ -161,8 +158,6 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function admin_notice_missing_main_plugin()
     {
-        if (isset($_GET['activate'])) unset($_GET['activate']);
-
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor */
             esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'alpha-single-product-for-elementor'),
@@ -182,7 +177,11 @@ final class Alpha_Single_Product_For_Elementor
             $button_text = esc_html__('Install Elementor', 'alpha-single-product-for-elementor');
         }
         $button = '<p><a href="' . $activation_url . '" class="button-primary">' . $button_text . '</a></p>';
-        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p>%2$s</div>', $message, $button);
+        printf(
+            '<div class="notice notice-warning is-dismissible"><p>%1$s</p>%2$s</div>',
+            esc_html($message),
+            wp_kses_post($button)
+        );
     }
 
     /**
@@ -195,8 +194,6 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function admin_notice_missing_woocommerce()
     {
-        if (isset($_GET['activate'])) unset($_GET['activate']);
-
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor */
             esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'alpha-single-product-for-elementor'),
@@ -216,7 +213,11 @@ final class Alpha_Single_Product_For_Elementor
             $button_text = esc_html__('Install WooCommerce', 'alpha-single-product-for-elementor');
         }
         $button = '<p><a href="' . $activation_url . '" class="button-primary">' . $button_text . '</a></p>';
-        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p>%2$s</div>', $message, $button);
+        printf(
+            '<div class="notice notice-warning is-dismissible"><p>%1$s</p>%2$s</div>',
+            esc_html($message),
+            wp_kses_post($button)
+        );
     }
 
     /**
@@ -229,18 +230,16 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function admin_notice_minimum_elementor_version()
     {
-
-        if (isset($_GET['activate'])) unset($_GET['activate']);
-
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'alpha-single-product-for-elementor'),
+            esc_html__('"%1$s" requires the "%2$s" plugin version %3$s or greater.', 'alpha-single-product-for-elementor'),
             '<strong>' . esc_html__('Alpha Single Product Widget for Elementor', 'alpha-single-product-for-elementor') . '</strong>',
             '<strong>' . esc_html__('Elementor', 'alpha-single-product-for-elementor') . '</strong>',
             self::MINIMUM_ELEMENTOR_VERSION
         );
 
-        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
+
+        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html($message));
     }
 
     /**
@@ -253,9 +252,6 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function admin_notice_minimum_php_version()
     {
-
-        if (isset($_GET['activate'])) unset($_GET['activate']);
-
         $message = sprintf(
             /* translators: 1: Plugin name 2: PHP 3: Required PHP version */
             esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'alpha-single-product-for-elementor'),
@@ -264,7 +260,7 @@ final class Alpha_Single_Product_For_Elementor
             self::MINIMUM_PHP_VERSION
         );
 
-        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
+        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html($message));
     }
 
     /**
@@ -272,7 +268,7 @@ final class Alpha_Single_Product_For_Elementor
      */
     public function frontend_styles()
     {
-        wp_enqueue_style('alphasp-widget', ALPHASP_PL_ASSETS . 'css/alpha-sp-widget.css', '', ALPHASP_VERSION);
+        wp_enqueue_style('alphasp-widget', ALPHASP_PLUGIN_ASSETS . 'css/alpha-sp-widget.css', [], ALPHASP_VERSION);
     }
 
     /**
@@ -287,7 +283,7 @@ final class Alpha_Single_Product_For_Elementor
     public function register_widgets($widgets_manager)
     {
         // Include Widget files
-        require_once ALPHASP_PL_INCLUDE . '/class-alpha-single-product-widget.php';
+        require_once ALPHASP_PLUGIN_INCLUDE . '/class-alpha-single-product-widget.php';
         // Register widget
         $widgets_manager->register(new \Elementor_Alpha_Single_Product_Addon\Alpha_SP_Widget());
     }

@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name: Alpha Single Product For Elementor
- * Plugin URI: https://alphatrio.net
+ * Plugin URI: https://ali-ali.org/
  * Description: Single WooCommerce Product Widget Addon For Elementor.
  * Author:      Ali Ali
  * Author URI:  https://github.com/Ali7Ali
- * Version:     1.0.5
+ * Version:     1.0.6
  * Text Domain: alpha-single-product-for-elementor
  * Domain Path: /languages
  * License: GPLv3
@@ -35,25 +35,21 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-define('ALPHASP_VERSION', '1.0.5');
-define('ALPHASP_ADDONS_PL_ROOT', __FILE__);
-define('ALPHASP_PL_URL', plugins_url('/', ALPHASP_ADDONS_PL_ROOT));
-define('ALPHASP_PL_PATH', plugin_dir_path(ALPHASP_ADDONS_PL_ROOT));
-define('ALPHASP_PL_ASSETS', trailingslashit(ALPHASP_PL_URL . 'assets'));
-define('ALPHASP_PL_INCLUDE', trailingslashit(ALPHASP_PL_PATH . 'include'));
-define('ALPHASP_PL_LANGUAGES', trailingslashit(ALPHASP_PL_PATH . 'languages'));
-define('ALPHASP_PLUGIN_BASE', plugin_basename(ALPHASP_ADDONS_PL_ROOT));
+define('ALPHASP_VERSION', '1.0.6');
+define('ALPHASP_PLUGIN_FILE', __FILE__);
+define('ALPHASP_PLUGIN_URL', plugins_url('/', ALPHASP_PLUGIN_FILE));
+define('ALPHASP_PLUGIN_PATH', plugin_dir_path(ALPHASP_PLUGIN_FILE));
+define('ALPHASP_PLUGIN_ASSETS', trailingslashit(ALPHASP_PLUGIN_URL  . 'assets'));
+define('ALPHASP_PLUGIN_INCLUDE', trailingslashit(ALPHASP_PLUGIN_PATH . 'include'));
+define('ALPHASP_PLUGIN_LANGUAGES', trailingslashit(ALPHASP_PLUGIN_PATH . 'languages'));
+define('ALPHASP_PLUGIN_BASENAME', plugin_basename(ALPHASP_PLUGIN_FILE));
 
 // Required File
-include(ALPHASP_PL_INCLUDE . '/class-alpha-single-product.php');
+require_once ALPHASP_PLUGIN_INCLUDE . 'class-alpha-single-product.php';
 
 function alpha_single_product_addon()
 {
-
-    // Load plugin file
-    require_once(ALPHASP_PL_INCLUDE . '/class-alpha-single-product.php');
-
-    // Run the plugin
+    // Load the main plugin class
     \Elementor_Alpha_Single_Product_Addon\Alpha_Single_Product_For_Elementor::instance();
 }
 add_action('plugins_loaded', 'alpha_single_product_addon');

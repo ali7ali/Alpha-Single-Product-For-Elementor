@@ -1,91 +1,95 @@
 # Alpha Single Product For Elementor
 
-[![WP](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![WordPress](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin Last Updated](https://img.shields.io/wordpress/plugin/last-updated/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![Tested WP Version](https://img.shields.io/wordpress/plugin/tested/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 
-=== Alpha Single Product For Elementor ===
+---
 
-Author: ali7ali
+**Author**: ali7ali  
+**Contributors**: ali7ali  
+**Tags**: single-product, elementor, woocommerce, product, page builder  
+**Requires at least**: 6.0  
+**Tested up to**: 6.7  
+**Requires PHP**: 7.4  
+**Stable tag**: 1.0.6  
+**License**: GPLv3  
+**License URI**: [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
 
-Contributors: ali7ali
+AEasily display and customize a single WooCommerce product anywhere on your website using Elementor.
 
-Tags: single-product, elementor, woocommerce, product, page builder
+---
 
-Requires at least: 6.0
+## Description
 
-Tested up to: 6.6
+Alpha Single Product For Elementor allows you to showcase a single WooCommerce product anywhere on your website. It integrates seamlessly with Elementor, providing an intuitive and flexible experience for WordPress users.
 
-Requires PHP: 7.4
+### Key Features
 
-Stable tag: 1.0.5
+- Fully customizable product widget
+- Direct product search for faster setup
+- Responsive live editing
+- Compatible with Elementor and WooCommerce
 
-License: GPLv3
+Elementor Website Builder includes powerful responsive tools, allowing you to create visually stunning websites. This plugin extends that functionality by giving you full control over the appearance of single product displays.
 
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+### Demo
 
-Alpha Single Product For Elementor is an addon plugin that offers the ability to add a single woocommerce product anywhere in your website with easy customized appearance features for WordPress.
+Check out the live demo of this widget [here](https://ali-ali.org/project/alpha-single-product-for-elementor/).
 
-== Description ==
-This addon plugin offers the ability to add a single woocommerce product anywhere in your website using Elementor.
+---
 
-Plugin features
+## Contributing and Reporting Bugs
 
-- Highly customized
-- Direct search for a product
-- Responsive Live Editing
+You can contribute code to this plugin via GitHub: [GitHub Repository](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor)
 
-Elementor Website Builder comes with an exclusive toolset, that lets you create a truly responsive website in a whole new and visual way. From different font sizes, padding, and margin per device, to reverse column ordering, this is the most powerful mobile site builder for creating perfect responsive websites.
+---
 
-= Demo =
-Check this widget demo here [here](https://alphatrio.net/alpha-single-product-for-elementor/).
+## Support
 
-= Contributing and reporting bugs =
+For support, use the [WordPress.org forums](https://wordpress.org/support/plugin/alpha-single-product-for-elementor/), or report bugs on [GitHub Issues](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor/issues/new/choose).
 
-You can contribute code to this plugin via GitHub: [https://github.com/ali7ali/Alpha-Single-Product-For-Elementor](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor)
+---
 
-= Support =
+## Installation
 
-Use the WordPress.org forums for community support. If you spot a bug, you can of course log it on [Github](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor/issues/new/choose) instead where we can act upon it more efficiently.
-
-== Installation ==
-
-= Minimum Requirements =
+### Minimum Requirements
 
 - WordPress 6.0 or greater
 - PHP version 7.4 or greater
 - MySQL version 5.0 or greater
 
-= We recommend your host supports: =
+### Recommended Configuration
 
 - PHP version 8.1 or greater
 - MySQL version 5.6 or greater
-- WordPress Memory limit of 64 MB or greater (128 MB or higher is preferred)
+- WordPress memory limit of 128 MB or greater
 
-= Installation =
+### Steps to Install
 
-First, make sure you have [Elementor Website Builder](https://wordpress.org/plugins/elementor/) plugin installed and activated.
-Also, you need [WooCommerce](https://wordpress.org/plugins/woocommerce/) plugin installed and activated.
+1. Ensure you have the [Elementor Website Builder](https://wordpress.org/plugins/elementor/) and [WooCommerce](https://wordpress.org/plugins/woocommerce/) plugins installed and activated.
+2. Log in to your WordPress Dashboard.
+3. Navigate to `Plugins > Add New`.
+4. Search for 'Alpha Single Product For Elementor'.
+5. Click `Install Now` and then `Activate`.
 
-Then follow these steps to install the plugin:
+#### Manual Installation:
 
-1. Log in to the WordPress Dashboard as an administrator.
-2. Click the Plugins | Add New button.
-3. Search for 'Alpha Single Product For Elementor' in the Search plugins field.
-4. Once you see the plugin listed, click the Install Now button.
-5. Click the Activate button to activate the plugin.
+1. Upload the plugin directory to `/wp-content/plugins/`.
+2. Activate the plugin via the Plugins screen in WordPress.
 
-Manual or using sFTP install:
+---
 
-1.  Upload 'plugin-directory' to the '/wp-content/plugins/' directory
-2.  Activate the plugin through the 'Plugins' screen in WordPress
+## Upgrade Notice
 
-== Upgrade Notice ==
+### 1.0.6
 
-= 1.0.5 =
-Compatibility for WP 6.6 and refactor the integration with Elementor.
+- Compatibility with WordPress 6.7
+- Code optimizations for PHP 8.1
+- Improved dependency checks for Elementor and WooCommerce
+- Refactored widget controls for better performance

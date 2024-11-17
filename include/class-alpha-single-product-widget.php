@@ -6,12 +6,6 @@ if (!defined('ABSPATH')) {
     exit; // If this file is called directly, abort.
 }
 
-/**
- * Alpha Single Product Widget.
- *
- *  */
-
-
 // Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -23,7 +17,7 @@ use Elementor\Group_Control_Typography;
 /**
  * Class Alpha_SP_Widget
  *
- * @package Elementor
+ * Elementor widget for displaying a single WooCommerce product.
  */
 class Alpha_SP_Widget extends Widget_Base
 {
@@ -87,7 +81,7 @@ class Alpha_SP_Widget extends Widget_Base
                 'raw' => sprintf(
                     /* translators: 1: Demo link open tag, 2: Link close tag. */
                     esc_html__('Check this widget demo %1$shere%2$s.', 'alpha-single-product-for-elementor'),
-                    '<a href="https://alphatrio.net/alpha-single-product-for-elementor/" target="_blank">',
+                    '<a href="https://ali-ali.org/project/alpha-single-product-for-elementor/" target="_blank">',
                     '</a>'
                 ),
                 'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
@@ -244,7 +238,7 @@ class Alpha_SP_Widget extends Widget_Base
         );
 
         $this->add_control(
-            'product_border_color',
+            'product_bordercolor',
             [
                 'label' => __('Border Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
@@ -497,7 +491,7 @@ class Alpha_SP_Widget extends Widget_Base
         );
 
         $this->add_control(
-            'button_border_color',
+            'button_bordercolor',
             [
                 'label' => __('Border Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
@@ -600,16 +594,19 @@ class Alpha_SP_Widget extends Widget_Base
     }
 
     /**
-     * Get Post List
-     * return array
+     * Get list of posts for selection.
+     *
+     * @param string $post_type
+     * @return array
      */
-    function alphasp_post_name($post_type = 'post')
+    private function alphasp_post_name($post_type = 'post')
     {
-        $options = array();
-        $options['0'] = __('Select', 'alpha-single-product-for-elementor');
-        $perpage = 7;
-        $all_post = array('posts_per_page' => $perpage, 'post_type' => $post_type);
-        $post_terms = get_posts($all_post);
+        $options = ['0' => __('Select', 'alpha-single-product-for-elementor')];
+        $post_terms = get_posts([
+            'posts_per_page' => 7,
+            'post_type' => $post_type,
+            'post_status' => 'publish',
+        ]);
         if (!empty($post_terms) && !is_wp_error($post_terms)) {
             foreach ($post_terms as $term) {
                 $options[$term->ID] = $term->post_title;
@@ -623,19 +620,25 @@ class Alpha_SP_Widget extends Widget_Base
      */
     function add_to_cart_text()
     {
-        $product_action_button_text = $this->get_settings('product_action_button_text');
-        return __($product_action_button_text, 'alpha-single-product-for-elementor');
+        // Define a default translatable string
+        $default_text = __('Add to Cart', 'alpha-single-product-for-elementor');
+
+        // Get the custom text from settings
+        $custom_text = $this->get_settings('product_action_button_text');
+
+        // If custom text exists, use it; otherwise, use the default text
+        return !empty($custom_text) ? esc_html($custom_text) : $default_text;
     }
 
     /**
-     * Render the widget on the frontend.
+     * Render the widget output on the frontend.
      */
     protected function render()
     {
         $settings           = $this->get_settings_for_display();
         $per_page           = 1;
 
-        $cart_action_classes = 'class="sp-cart-button ' . $settings['product_action_button_class'] . '"';
+        $cart_action_classes = 'class="sp-cart-button ' . esc_attr($settings['product_action_button_class']) . '"';
 
 
         add_filter('wc_add_to_cart_params', function ($params) {
@@ -700,7 +703,7 @@ class Alpha_SP_Widget extends Widget_Base
                                     <h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                                     <div class="sp-product-price"><?php woocommerce_template_loop_price(); ?></div>
                                 </div>
-                                <div <?php echo $cart_action_classes; ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
+                                <div <?php echo esc_attr($cart_action_classes); ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
                             </div>
                         <?php else : ?>
                             <div class="sp-product-action2">
@@ -708,7 +711,7 @@ class Alpha_SP_Widget extends Widget_Base
                                     <h4 class="sp-product-title2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                                     <div class="sp-product-price2"><?php woocommerce_template_loop_price(); ?></div>
                                 </div>
-                                <div <?php echo $cart_action_classes; ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
+                                <div <?php echo esc_attr($cart_action_classes); ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
                             </div>
                         <?php endif; ?>
                     </div>

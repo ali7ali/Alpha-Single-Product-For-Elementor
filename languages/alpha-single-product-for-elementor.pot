@@ -1,246 +1,249 @@
-# Copyright (C) 2023 Ali Ali
+# Copyright (C) 2024 Ali Ali
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Alpha Single Product For Elementor 1.0.4\n"
+"Project-Id-Version: Alpha Single Product For Elementor 1.0.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/alpha-single-product-for-elementor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-17T04:10:02+00:00\n"
+"POT-Creation-Date: 2024-11-15T23:27:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: alpha-single-product-for-elementor\n"
 
 #. Plugin Name of the plugin
+#: alpha-single-product-for-elementor.php
 msgid "Alpha Single Product For Elementor"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://alphatrio.net"
+#: alpha-single-product-for-elementor.php
+msgid "https://ali-ali.org/"
 msgstr ""
 
 #. Description of the plugin
+#: alpha-single-product-for-elementor.php
 msgid "Single WooCommerce Product Widget Addon For Elementor."
 msgstr ""
 
 #. Author of the plugin
+#: alpha-single-product-for-elementor.php
 msgid "Ali Ali"
 msgstr ""
 
 #. Author URI of the plugin
+#: alpha-single-product-for-elementor.php
 msgid "https://github.com/Ali7Ali"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:47
+#: include/class-alpha-single-product-widget.php:41
 msgid "Alpha SP Widget"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:79
+#: include/class-alpha-single-product-widget.php:73
 msgid "Query Settings"
 msgstr ""
 
 #. translators: 1: Demo link open tag, 2: Link close tag.
-#: include/class-alpha-single-product-widget.php:89
+#: include/class-alpha-single-product-widget.php:83
 msgid "Check this widget demo %1$shere%2$s."
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:100
+#: include/class-alpha-single-product-widget.php:94
 msgid "Select Product"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:114
+#: include/class-alpha-single-product-widget.php:108
 msgid "Product Settings"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:121
+#: include/class-alpha-single-product-widget.php:115
 msgid "Title, Price, and Button Location"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:123
+#: include/class-alpha-single-product-widget.php:117
 msgid "Under"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:124
+#: include/class-alpha-single-product-widget.php:118
 msgid "Above"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:133
+#: include/class-alpha-single-product-widget.php:127
 msgid "Hide Title"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:145
+#: include/class-alpha-single-product-widget.php:139
 msgid "Hide Price"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:157
+#: include/class-alpha-single-product-widget.php:151
 msgid "Action Button Text"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:159
+#: include/class-alpha-single-product-widget.php:153
 msgid "ADD TO CART"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:166
+#: include/class-alpha-single-product-widget.php:160
 msgid "Add CSS Class"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:174
+#: include/class-alpha-single-product-widget.php:168
 msgid "Product Image Size"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:183
+#: include/class-alpha-single-product-widget.php:177
 msgid "Width PX"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:197
+#: include/class-alpha-single-product-widget.php:191
 msgid "Height PX"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:212
+#: include/class-alpha-single-product-widget.php:206
 msgid "Style"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:229
-#: include/class-alpha-single-product-widget.php:482
+#: include/class-alpha-single-product-widget.php:223
+#: include/class-alpha-single-product-widget.php:476
 msgid "Border Radius"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:249
-#: include/class-alpha-single-product-widget.php:502
-#: include/class-alpha-single-product-widget.php:587
+#: include/class-alpha-single-product-widget.php:243
+#: include/class-alpha-single-product-widget.php:496
+#: include/class-alpha-single-product-widget.php:581
 msgid "Border Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:261
+#: include/class-alpha-single-product-widget.php:255
 msgid "Padding"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:273
-#: include/class-alpha-single-product-widget.php:330
-#: include/class-alpha-single-product-widget.php:383
+#: include/class-alpha-single-product-widget.php:267
+#: include/class-alpha-single-product-widget.php:324
+#: include/class-alpha-single-product-widget.php:377
 msgid "Margin"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:286
+#: include/class-alpha-single-product-widget.php:280
 msgid "Product Title"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:304
+#: include/class-alpha-single-product-widget.php:298
 msgid "Title Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:317
+#: include/class-alpha-single-product-widget.php:311
 msgid "Title Hover Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:352
+#: include/class-alpha-single-product-widget.php:346
 msgid "Product Price"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:361
+#: include/class-alpha-single-product-widget.php:355
 msgid "Price Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:407
+#: include/class-alpha-single-product-widget.php:401
 msgid "Action Button Style"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:415
+#: include/class-alpha-single-product-widget.php:409
 msgid "Button"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:429
+#: include/class-alpha-single-product-widget.php:423
 msgid "Normal"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:436
-#: include/class-alpha-single-product-widget.php:563
+#: include/class-alpha-single-product-widget.php:430
+#: include/class-alpha-single-product-widget.php:557
 msgid "Text Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:457
-#: include/class-alpha-single-product-widget.php:575
+#: include/class-alpha-single-product-widget.php:451
+#: include/class-alpha-single-product-widget.php:569
 msgid "Background Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:514
+#: include/class-alpha-single-product-widget.php:508
 msgid "Button Padding"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:534
+#: include/class-alpha-single-product-widget.php:528
 msgid "Button Margin"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:556
+#: include/class-alpha-single-product-widget.php:550
 msgid "Hover"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:609
+#: include/class-alpha-single-product-widget.php:604
 msgid "Select"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:648
-#: include/class-alpha-single-product.php:125
+#: include/class-alpha-single-product-widget.php:624
+msgid "Add to Cart"
+msgstr ""
+
+#: include/class-alpha-single-product-widget.php:651
+#: include/class-alpha-single-product.php:144
 msgid "Go to cart"
 msgstr ""
 
-#. translators: 1: Just text decoration 2: Just text decoration
-#: include/class-alpha-single-product.php:155
-msgid "%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s\"Elementor\"%2$s plugin to be active. Please activate Elementor to continue."
-msgstr ""
-
-#: include/class-alpha-single-product.php:156
-msgid "Activate Elementor"
-msgstr ""
-
-#. translators: 1: Just text decoration 2: Just text decoration
+#. translators: 1: Plugin name 2: Elementor
 #: include/class-alpha-single-product.php:163
-msgid "%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s\"Elementor\"%2$s plugin to be installed and activated. Please install Elementor to continue."
+#: include/class-alpha-single-product.php:199
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
 msgstr ""
 
 #: include/class-alpha-single-product.php:164
+#: include/class-alpha-single-product.php:200
+#: include/class-alpha-single-product.php:236
+#: include/class-alpha-single-product.php:258
+msgid "Alpha Single Product Widget for Elementor"
+msgstr ""
+
+#: include/class-alpha-single-product.php:165
+#: include/class-alpha-single-product.php:237
+msgid "Elementor"
+msgstr ""
+
+#: include/class-alpha-single-product.php:174
+msgid "Activate Elementor"
+msgstr ""
+
+#: include/class-alpha-single-product.php:177
 msgid "Install Elementor"
 msgstr ""
 
-#. translators: 1: Just text decoration 2: Just text decoration
-#: include/class-alpha-single-product.php:184
-msgid "%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s\"WooCommerce\"%2$s plugin to be active. Please activate WooCommerce to continue."
+#: include/class-alpha-single-product.php:201
+msgid "WooCommerce"
 msgstr ""
 
-#: include/class-alpha-single-product.php:185
+#: include/class-alpha-single-product.php:210
 msgid "Activate WooCommerce"
 msgstr ""
 
-#. translators: 1: Just text decoration 2: Just text decoration
-#: include/class-alpha-single-product.php:192
-msgid "%1$sAlpha Single Product Widget for Elementor%2$s requires %1$s\"WooCommerce\"%2$s plugin to be installed and activated. Please install WooCommerce to continue."
-msgstr ""
-
-#: include/class-alpha-single-product.php:193
+#: include/class-alpha-single-product.php:213
 msgid "Install WooCommerce"
 msgstr ""
 
 #. translators: 1: Plugin name 2: Elementor 3: Required Elementor version
-#: include/class-alpha-single-product.php:210
+#: include/class-alpha-single-product.php:235
+msgid "\"%1$s\" requires the \"%2$s\" plugin version %3$s or greater."
+msgstr ""
+
+#. translators: 1: Plugin name 2: PHP 3: Required PHP version
+#: include/class-alpha-single-product.php:257
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
 
-#: include/class-alpha-single-product.php:211
-msgid "Alpha Single Product Widget for Elementor"
-msgstr ""
-
-#: include/class-alpha-single-product.php:212
-msgid "Elementor"
-msgstr ""
-
-#. translators: 1: Plugin name 2: Required PHP version
-#: include/class-alpha-single-product.php:230
-msgid "\"%1$s\" requires PHP version %2$s or greater."
-msgstr ""
-
-#: include/class-alpha-single-product.php:231
-msgid "Alpha Single Product Widget"
+#: include/class-alpha-single-product.php:259
+msgid "PHP"
 msgstr ""
