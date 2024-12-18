@@ -17,7 +17,7 @@
 **Requires at least**: 6.0  
 **Tested up to**: 6.7  
 **Requires PHP**: 7.4  
-**Stable tag**: 1.0.6  
+**Stable tag**: 1.0.7
 **License**: GPLv3  
 **License URI**: [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
 
@@ -87,9 +87,6 @@ For support, use the [WordPress.org forums](https://wordpress.org/support/plugin
 
 ## Upgrade Notice
 
-### 1.0.6
+### 1.0.7
 
-- Compatibility with WordPress 6.7
-- Code optimizations for PHP 8.1
-- Improved dependency checks for Elementor and WooCommerce
-- Refactored widget controls for better performance
+- Compatibility for the updated Elementor colors and typography schema.

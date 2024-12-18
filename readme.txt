@@ -5,7 +5,7 @@ Tags: single-product, elementor,  woocommerce, product, page builder
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -56,8 +56,5 @@ Manual Installation:
 
 == Upgrade Notice ==
 
-= 1.0.6 =
-* Compatibility with WordPress 6.7
-* Code optimizations for PHP 8.1
-* Improved dependency checks for Elementor and WooCommerce
-* Refactored widget controls for better performance
+= 1.0.7 =
+* Compatibility for the updated Elementor colors and typography schema.

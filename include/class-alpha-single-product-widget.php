@@ -9,8 +9,8 @@ if (!defined('ABSPATH')) {
 // Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Color;
-use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 
@@ -287,7 +287,9 @@ class Alpha_SP_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'product_title_typography',
-                'scheme' => Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .sp-product-title a,{{WRAPPER}} .sp-product-title2 a',
             ]
         );
@@ -366,7 +368,9 @@ class Alpha_SP_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'product_price_typography',
-                'scheme' => Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .sp-product-price span, {{WRAPPER}} .sp-product-price2 span',
             ]
         );
@@ -440,7 +444,9 @@ class Alpha_SP_Widget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_typography',
-                'scheme' => Typography::TYPOGRAPHY_4,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+                ],
                 'selector' => '{{WRAPPER}} .sp-cart-button a',
             ]
         );
@@ -450,9 +456,8 @@ class Alpha_SP_Widget extends Widget_Base
             [
                 'label' => __('Background Color', 'alpha-single-product-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Color::get_type(),
-                    'value' => Color::COLOR_4,
+                'global' => [
+                    'default' => Global_Colors::COLOR_ACCENT,
                 ],
                 'default' => '#EFC24F',
                 'selectors' => [
@@ -596,17 +601,19 @@ class Alpha_SP_Widget extends Widget_Base
     /**
      * Get list of posts for selection.
      *
-     * @param string $post_type
+     * @param  string $post_type
      * @return array
      */
     private function alphasp_post_name($post_type = 'post')
     {
         $options = ['0' => __('Select', 'alpha-single-product-for-elementor')];
-        $post_terms = get_posts([
+        $post_terms = get_posts(
+            [
             'posts_per_page' => 7,
             'post_type' => $post_type,
             'post_status' => 'publish',
-        ]);
+            ]
+        );
         if (!empty($post_terms) && !is_wp_error($post_terms)) {
             foreach ($post_terms as $term) {
                 $options[$term->ID] = $term->post_title;
@@ -641,18 +648,20 @@ class Alpha_SP_Widget extends Widget_Base
         $cart_action_classes = 'class="sp-cart-button ' . esc_attr($settings['product_action_button_class']) . '"';
 
 
-        add_filter('wc_add_to_cart_params', function ($params) {
-            // Don't modify params if we're on a WooCommerce page (delete if not needed).
-            if (is_woocommerce()) {
+        add_filter(
+            'wc_add_to_cart_params', function ($params) {
+                // Don't modify params if we're on a WooCommerce page (delete if not needed).
+                if (is_woocommerce()) {
+                    return $params;
+                }
+
+                // Set the 'View cart' text
+                $params['i18n_view_cart'] = __('Go to cart',  'alpha-single-product-for-elementor');
+                // Set the 'View cart' URL
+                $params['cart_url'] =  esc_url(wc_get_cart_url());
                 return $params;
             }
-
-            // Set the 'View cart' text
-            $params['i18n_view_cart'] = __('Go to cart',  'alpha-single-product-for-elementor');
-            // Set the 'View cart' URL
-            $params['cart_url'] =  esc_url(wc_get_cart_url());
-            return $params;
-        });
+        );
 
         // Query Argument
         $args = array(
@@ -678,7 +687,7 @@ class Alpha_SP_Widget extends Widget_Base
             add_filter('woocommerce_product_add_to_cart_text', [$this, 'add_to_cart_text']);
         }
 
-?>
+        ?>
         <div class="alpha-sp-product">
             <?php $products = new \WP_Query($args);
             if ($products->have_posts()) : ?>
@@ -721,6 +730,6 @@ class Alpha_SP_Widget extends Widget_Base
                 wp_reset_postdata(); ?>
             <?php endif;  ?>
         </div>
-<?php
+        <?php
     }
 }
