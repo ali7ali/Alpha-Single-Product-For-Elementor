@@ -15,9 +15,9 @@
 **Contributors**: ali7ali  
 **Tags**: single-product, elementor, woocommerce, product, page builder  
 **Requires at least**: 6.0  
-**Tested up to**: 6.7  
+**Tested up to**: 6.8  
 **Requires PHP**: 7.4  
-**Stable tag**: 1.0.7
+**Stable tag**: 1.1
 **License**: GPLv3  
 **License URI**: [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
 
@@ -87,6 +87,6 @@ For support, use the [WordPress.org forums](https://wordpress.org/support/plugin
 
 ## Upgrade Notice
 
-### 1.0.7
+### 1.1
 
-- Compatibility for the updated Elementor colors and typography schema.
+- Compatibility for WP 6.8
