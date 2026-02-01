@@ -80,13 +80,6 @@ final class Alpha_Single_Product_For_Elementor {
 	}
 
 	/**
-	 * Load the plugin text domain.
-	 */
-	public function i18n() {
-		load_plugin_textdomain( 'alpha-single-product-for-elementor', false, ALPHASP_PLUGIN_LANGUAGES );
-	}
-
-	/**
 	 * Compatibility Checks
 	 *
 	 * Checks whether the site meets the addon requirement.
@@ -128,9 +121,6 @@ final class Alpha_Single_Product_For_Elementor {
 	 * Initialize the plugin.
 	 */
 	public function init() {
-
-		$this->i18n();
-
 		add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'frontend_styles' ) );
 		add_action( 'elementor/widgets/register', array( $this, 'register_widgets' ) );
 

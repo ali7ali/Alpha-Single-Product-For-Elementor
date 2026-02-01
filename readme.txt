@@ -3,9 +3,9 @@ Author: ali7ali
 Contributors: ali7ali
 Tags: single-product, elementor,  woocommerce, product, page builder
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.1
+Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -55,6 +55,9 @@ Manual Installation:
 2. Activate the plugin via the Plugins screen in WordPress.
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+* Optional placeholder state so pages don’t appear blank when no product is selected.
 
 = 1.1 =
 * Compatibility for WP 6.8

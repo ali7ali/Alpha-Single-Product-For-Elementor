@@ -99,6 +99,33 @@ class Alpha_SP_Widget extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'show_placeholder',
+			array(
+				'label'        => __( 'Placeholder When Empty', 'alpha-single-product-for-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'alpha-single-product-for-elementor' ),
+				'label_off'    => esc_html__( 'Hide', 'alpha-single-product-for-elementor' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'description'  => __( 'Display a placeholder when no product is selected or the product is unavailable.', 'alpha-single-product-for-elementor' ),
+			)
+		);
+
+		$this->add_control(
+			'placeholder_text',
+			array(
+				'label'       => __( 'Placeholder Message', 'alpha-single-product-for-elementor' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'Select a product to display.', 'alpha-single-product-for-elementor' ),
+				'condition'   => array(
+					'show_placeholder' => 'yes',
+				),
+				'rows'        => 3,
+				'placeholder' => __( 'Select a product to display.', 'alpha-single-product-for-elementor' ),
+			)
+		);
+
 		$this->end_controls_section();
 
 		// Product Content.
@@ -619,6 +646,8 @@ class Alpha_SP_Widget extends Widget_Base {
 			}
 			return $options;
 		}
+
+		return $options;
 	}
 
 	/**
@@ -642,7 +671,15 @@ class Alpha_SP_Widget extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		$per_page = 1;
 
-		$cart_action_classes = 'class="sp-cart-button ' . esc_attr( $settings['product_action_button_class'] ) . '"';
+		$product_id = isset( $settings['alphasp_product_id'] ) ? absint( $settings['alphasp_product_id'] ) : 0;
+
+		if ( ! $product_id ) {
+			$this->render_placeholder( $settings, true );
+			return;
+		}
+
+		$cart_button_class   = isset( $settings['product_action_button_class'] ) ? $settings['product_action_button_class'] : '';
+		$cart_action_classes = 'class="sp-cart-button ' . esc_attr( $cart_button_class ) . '"';
 
 		add_filter(
 			'wc_add_to_cart_params',
@@ -668,7 +705,7 @@ class Alpha_SP_Widget extends Widget_Base {
 			'posts_per_page'      => $per_page,
 		);
 
-		$args['p'] = $settings['alphasp_product_id'];
+		$args['p'] = $product_id;
 
 		// Action Button.
 		$this->add_render_attribute( 'action_btn_attr', 'class', 'alpha-sp-action-btn-area' );
@@ -677,7 +714,7 @@ class Alpha_SP_Widget extends Widget_Base {
 			$this->add_render_attribute( 'action_btn_attr', 'class', 'alpha-sp-btn-text-cart' );
 		}
 
-		if ( $settings['product_action_button_text'] ) {
+		if ( ! empty( $settings['product_action_button_text'] ) ) {
 			// To change add to cart text on single product page.
 			add_filter( 'woocommerce_product_single_add_to_cart_text', array( $this, 'add_to_cart_text' ) );
 			// To change add to cart text on product archives(Collection) page.
@@ -689,8 +726,6 @@ class Alpha_SP_Widget extends Widget_Base {
 			<?php
 			$products = new \WP_Query( $args );
 			if ( $products->have_posts() ) :
-				?>
-				<?php
 				while ( $products->have_posts() ) :
 					$products->the_post();
 					// Gallery Image.
@@ -707,7 +742,7 @@ class Alpha_SP_Widget extends Widget_Base {
 								<?php woocommerce_template_loop_product_thumbnail(); ?>
 							</a>
 						</div>
-						<?php if ( 'yes' !== $settings['product_info_location'] ) : ?>
+						<?php if ( ! isset( $settings['product_info_location'] ) || 'yes' !== $settings['product_info_location'] ) : ?>
 							<div class="sp-product-action">
 								<div class="sp-product-info">
 									<h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
@@ -729,8 +764,30 @@ class Alpha_SP_Widget extends Widget_Base {
 					<?php
 				endwhile;
 				wp_reset_postdata();
-				?>
-			<?php endif; ?>
+			else :
+				$this->render_placeholder( $settings, false );
+			endif;
+			?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render placeholder when no product is selected or available.
+	 *
+	 * @param array $settings      Widget settings.
+	 * @param bool  $with_wrapper  Whether to wrap with the widget container.
+	 * @return void
+	 */
+	protected function render_placeholder( $settings, $with_wrapper = true ) {
+		if ( ! isset( $settings['show_placeholder'] ) || 'yes' !== $settings['show_placeholder'] ) {
+			return;
+		}
+
+		$placeholder_text = ! empty( $settings['placeholder_text'] ) ? $settings['placeholder_text'] : __( 'Select a product to display.', 'alpha-single-product-for-elementor' );
+		?>
+		<div class="<?php echo esc_attr( true === $with_wrapper ? 'alpha-sp-product alpha-sp-placeholder' : 'alpha-sp-placeholder' ); ?>">
+			<div class="sp-placeholder-message"><?php echo wp_kses_post( $placeholder_text ); ?></div>
 		</div>
 		<?php
 	}

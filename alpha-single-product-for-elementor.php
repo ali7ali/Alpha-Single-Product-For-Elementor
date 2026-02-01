@@ -5,7 +5,7 @@
  * Description: Single WooCommerce Product Widget Addon For Elementor.
  * Author:      Ali Ali
  * Author URI:  https://github.com/Ali7Ali
- * Version:     1.1
+ * Version:     1.2.0
  * Text Domain: alpha-single-product-for-elementor
  * Domain Path: /languages
  * License: GPLv3
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ALPHASP_VERSION', '1.1' );
+define( 'ALPHASP_VERSION', '1.2.0' );
 define( 'ALPHASP_PLUGIN_FILE', __FILE__ );
 define( 'ALPHASP_PLUGIN_URL', plugins_url( '/', ALPHASP_PLUGIN_FILE ) );
 define( 'ALPHASP_PLUGIN_PATH', plugin_dir_path( ALPHASP_PLUGIN_FILE ) );
@@ -52,8 +52,8 @@ require_once ALPHASP_PLUGIN_INCLUDE . 'class-alpha-single-product.php';
  *
  * @return void
  */
-function alpha_single_product_addon() {
+function alphasp_single_product_addon() {
 	// Load the main plugin class.
 	\Elementor_Alpha_Single_Product_Addon\Alpha_Single_Product_For_Elementor::instance();
 }
-add_action( 'plugins_loaded', 'alpha_single_product_addon' );
+add_action( 'plugins_loaded', 'alphasp_single_product_addon' );
