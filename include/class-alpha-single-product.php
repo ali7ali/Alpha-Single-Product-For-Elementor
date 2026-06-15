@@ -122,6 +122,7 @@ final class Alpha_Single_Product_For_Elementor {
 	 */
 	public function init() {
 		add_action( 'elementor/frontend/after_register_styles', array( $this, 'register_frontend_styles' ) );
+		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_styles' ) );
 		add_action( 'elementor/widgets/register', array( $this, 'register_widgets' ) );
 
 		add_filter(
@@ -332,6 +333,18 @@ final class Alpha_Single_Product_For_Elementor {
 		printf(
 			'<div class="notice notice-warning is-dismissible">%s</div>',
 			wp_kses( '<p>' . $message . '</p>', $allowed_html )
+		);
+	}
+
+	/**
+	 * Enqueue styles for the Elementor editor preview.
+	 */
+	public function enqueue_editor_styles() {
+		wp_enqueue_style(
+			'alphasp-editor',
+			ALPHASP_PLUGIN_ASSETS . 'css/editor-preview.css',
+			array(),
+			ALPHASP_VERSION
 		);
 	}
 
