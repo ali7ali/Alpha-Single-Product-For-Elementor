@@ -5,11 +5,12 @@ on:
     branches: [ master ]
     paths:
       - '**.php'
-    paths-ignore:
-      - 'languages/*.pot'
 
 permissions:
   contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   pot:
