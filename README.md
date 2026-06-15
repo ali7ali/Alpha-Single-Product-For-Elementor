@@ -15,9 +15,9 @@
 **Contributors**: ali7ali  
 **Tags**: single-product, elementor, woocommerce, product, page builder  
 **Requires at least**: 6.0  
-**Tested up to**: 6.9  
+**Tested up to**: 7.0  
 **Requires PHP**: 7.4  
-**Stable tag**: 1.2.0
+**Stable tag**: 1.3.0
 **License**: GPLv3  
 **License URI**: [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
 
@@ -85,7 +85,12 @@ For support, use the [WordPress.org forums](https://wordpress.org/support/plugin
 
 ---
 
-## Upgrade Notice
+## Changelog
+
+### 1.3.0 - 2026-06-15
+
+- Compatibility for WordPress 7.0.
+- Compatibility for Elementor 4.x.
 
 ### 1.2.0
 - New optional placeholder state so pages don’t appear blank when no product is selected.
