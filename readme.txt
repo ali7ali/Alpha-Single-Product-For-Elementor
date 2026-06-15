@@ -3,9 +3,9 @@ Author: ali7ali
 Contributors: ali7ali
 Tags: single-product, elementor,  woocommerce, product, page builder
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +31,7 @@ You can contribute to the development of this plugin on GitHub: [GitHub Reposito
 = Support =
 For support, use the WordPress.org forums or report bugs on [GitHub Issues](https://github.com/ali7ali/Alpha-Single-Product-For-Elementor/issues/new/choose).
 
-== Installation == 
+== Installation ==
 
 = Minimum Requirements =
 * WordPress 6.0 or greater
@@ -54,10 +54,14 @@ Manual Installation:
 1. Upload the plugin directory to `/wp-content/plugins/`.
 2. Activate the plugin via the Plugins screen in WordPress.
 
-== Upgrade Notice ==
+== Changelog ==
+
+= 1.3.0 - 2026-06-15 =
+* Compatibility for WordPress 7.0.
+* Compatibility for Elementor 4.x.
 
 = 1.2.0 =
-* Optional placeholder state so pages don’t appear blank when no product is selected.
+* Optional placeholder state so pages don't appear blank when no product is selected.
 
 = 1.1 =
 * Compatibility for WP 6.8
