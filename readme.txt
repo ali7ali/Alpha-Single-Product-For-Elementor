@@ -64,7 +64,7 @@ Manual Installation:
 * Switched to per-widget CSS loading (register + get_style_depends).
 * Added .editorconfig and .gitignore.
 * Added editor preview styles.
-* Added PHPCS GitHub Actions workflow.
+* Added PHPCS and POT generation GitHub Actions workflows.
 
 = 1.2.0 =
 * Optional placeholder state so pages don't appear blank when no product is selected.
