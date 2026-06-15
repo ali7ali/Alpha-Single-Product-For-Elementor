@@ -121,7 +121,7 @@ final class Alpha_Single_Product_For_Elementor {
 	 * Initialize the plugin.
 	 */
 	public function init() {
-		add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'frontend_styles' ) );
+		add_action( 'elementor/frontend/after_register_styles', array( $this, 'register_frontend_styles' ) );
 		add_action( 'elementor/widgets/register', array( $this, 'register_widgets' ) );
 
 		add_filter(
@@ -336,10 +336,15 @@ final class Alpha_Single_Product_For_Elementor {
 	}
 
 	/**
-	 * Loading plugin css.
+	 * Register plugin styles for Elementor widgets.
 	 */
-	public function frontend_styles() {
-		wp_enqueue_style( 'alphasp-widget', ALPHASP_PLUGIN_ASSETS . 'css/alpha-sp-widget.css', array(), ALPHASP_VERSION );
+	public function register_frontend_styles() {
+		wp_register_style(
+			'alphasp-widget',
+			ALPHASP_PLUGIN_ASSETS . 'css/alpha-sp-widget.css',
+			array(),
+			ALPHASP_VERSION
+		);
 	}
 
 	/**

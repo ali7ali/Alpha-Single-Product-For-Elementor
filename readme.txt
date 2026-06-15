@@ -2,7 +2,7 @@
 Author: ali7ali
 Contributors: ali7ali
 Tags: single-product, elementor,  woocommerce, product, page builder
-Requires at least: 6.0
+Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.3.0
@@ -59,6 +59,10 @@ Manual Installation:
 = 1.3.0 - 2026-06-15 =
 * Compatibility for WordPress 7.0.
 * Compatibility for Elementor 4.x.
+* Increased product dropdown limit to 50.
+* Removed duplicate 'wc_add_to_cart_params' filter in render.
+* Switched to per-widget CSS loading (register + get_style_depends).
+* Added .editorconfig and .gitignore.
 
 = 1.2.0 =
 * Optional placeholder state so pages don't appear blank when no product is selected.

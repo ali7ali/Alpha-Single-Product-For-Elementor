@@ -63,6 +63,15 @@ class Alpha_SP_Widget extends Widget_Base {
 	}
 
 	/**
+	 * Widget styles dependencies.
+	 *
+	 * @return array
+	 */
+	public function get_style_depends() {
+		return array( 'alphasp-widget' );
+	}
+
+	/**
 	 * Register widget controls.
 	 */
 	protected function register_controls() {
@@ -635,7 +644,7 @@ class Alpha_SP_Widget extends Widget_Base {
 		$options    = array( '0' => __( 'Select', 'alpha-single-product-for-elementor' ) );
 		$post_terms = get_posts(
 			array(
-				'posts_per_page' => 7,
+				'posts_per_page' => 50,
 				'post_type'      => $post_type,
 				'post_status'    => 'publish',
 			)
@@ -680,22 +689,6 @@ class Alpha_SP_Widget extends Widget_Base {
 
 		$cart_button_class   = isset( $settings['product_action_button_class'] ) ? $settings['product_action_button_class'] : '';
 		$cart_action_classes = 'class="sp-cart-button ' . esc_attr( $cart_button_class ) . '"';
-
-		add_filter(
-			'wc_add_to_cart_params',
-			function ( $params ) {
-				// Don't modify params if we're on a WooCommerce page (delete if not needed).
-				if ( is_woocommerce() ) {
-					return $params;
-				}
-
-				// Set the 'View cart' text.
-				$params['i18n_view_cart'] = __( 'Go to cart', 'alpha-single-product-for-elementor' );
-				// Set the 'View cart' URL.
-				$params['cart_url'] = esc_url( wc_get_cart_url() );
-				return $params;
-			}
-		);
 
 		// Query Argument.
 		$args = array(
