@@ -712,7 +712,9 @@ class Alpha_SP_Widget extends Widget_Base {
 			$this->add_render_attribute( 'action_btn_attr', 'class', 'alpha-sp-btn-text-cart' );
 		}
 
-		if ( ! empty( $settings['product_action_button_text'] ) ) {
+		$has_custom_cart_text = ! empty( $settings['product_action_button_text'] );
+
+		if ( $has_custom_cart_text ) {
 			// To change add to cart text on single product page.
 			add_filter( 'woocommerce_product_single_add_to_cart_text', array( $this, 'add_to_cart_text' ) );
 			// To change add to cart text on product archives(Collection) page.
@@ -726,12 +728,6 @@ class Alpha_SP_Widget extends Widget_Base {
 			if ( $products->have_posts() ) :
 				while ( $products->have_posts() ) :
 					$products->the_post();
-					// Gallery Image.
-					global $product;
-					$gallery_images_ids = $product->get_gallery_image_ids() ? $product->get_gallery_image_ids() : array();
-					if ( has_post_thumbnail() ) {
-						array_unshift( $gallery_images_ids, $product->get_image_id() );
-					}
 					?>
 					<!--Product Start-->
 					<div class="sp-product-wrapper">
@@ -743,7 +739,7 @@ class Alpha_SP_Widget extends Widget_Base {
 						<?php if ( ! isset( $settings['product_info_location'] ) || 'yes' !== $settings['product_info_location'] ) : ?>
 							<div class="sp-product-action">
 								<div class="sp-product-info">
-									<h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+									<h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_title() ); ?></a></h4>
 									<div class="sp-product-price"><?php woocommerce_template_loop_price(); ?></div>
 								</div>
 								<div class="sp-cart-button <?php echo esc_attr( $cart_button_class ); ?>"><?php woocommerce_template_loop_add_to_cart(); ?></div>
@@ -751,7 +747,7 @@ class Alpha_SP_Widget extends Widget_Base {
 						<?php else : ?>
 							<div class="sp-product-action2">
 								<div class="sp-product-info2">
-									<h4 class="sp-product-title2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+									<h4 class="sp-product-title2"><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_title() ); ?></a></h4>
 									<div class="sp-product-price2"><?php woocommerce_template_loop_price(); ?></div>
 								</div>
 								<div class="sp-cart-button <?php echo esc_attr( $cart_button_class ); ?>"><?php woocommerce_template_loop_add_to_cart(); ?></div>
@@ -768,6 +764,11 @@ class Alpha_SP_Widget extends Widget_Base {
 			?>
 		</div>
 		<?php
+
+		if ( $has_custom_cart_text ) {
+			remove_filter( 'woocommerce_product_single_add_to_cart_text', array( $this, 'add_to_cart_text' ) );
+			remove_filter( 'woocommerce_product_add_to_cart_text', array( $this, 'add_to_cart_text' ) );
+		}
 	}
 
 	/**

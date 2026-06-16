@@ -134,6 +134,10 @@ final class Alpha_Single_Product_For_Elementor {
 	 * Warning when the site doesn't have Elementor installed or activated.
 	 */
 	public function admin_notice_missing_main_plugin() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: Elementor */
 			__( '"%1$s" requires "%2$s" to be installed and activated.', 'alpha-single-product-for-elementor' ),
@@ -195,6 +199,10 @@ final class Alpha_Single_Product_For_Elementor {
 	 * Warning when the site doesn't have WooCommerce installed or activated.
 	 */
 	public function admin_notice_missing_woocommerce() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: WooCommerce */
 			__( '"%1$s" requires "%2$s" to be installed and activated.', 'alpha-single-product-for-elementor' ),

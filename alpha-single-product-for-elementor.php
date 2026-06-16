@@ -39,14 +39,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( defined( 'ALPHASP_PLUGIN_FILE' ) && realpath( (string) ALPHASP_PLUGIN_FILE ) !== realpath( __FILE__ ) ) {
-	/**
-	 * Display a notice when another copy of the plugin is already active.
-	 */
-	function alpha_single_product_for_elementor_duplicate_copy_notice(): void {
-		printf(
-			'<div class="notice notice-error"><p>%s</p></div>',
-			esc_html__( 'Alpha Single Product For Elementor is already active from another plugin folder. Deactivate and delete the old copy before activating this one, or install the update using a ZIP whose top-level folder is alpha-single-product-for-elementor.', 'alpha-single-product-for-elementor' )
-		);
+	if ( ! function_exists( 'alpha_single_product_for_elementor_duplicate_copy_notice' ) ) {
+		/**
+		 * Display a notice when another copy of the plugin is already active.
+		 */
+		function alpha_single_product_for_elementor_duplicate_copy_notice(): void {
+			printf(
+				'<div class="notice notice-error"><p>%s</p></div>',
+				esc_html__( 'Alpha Single Product For Elementor is already active from another plugin folder. Deactivate and delete the old copy before activating this one, or install the update using a ZIP whose top-level folder is alpha-single-product-for-elementor.', 'alpha-single-product-for-elementor' )
+			);
+		}
 	}
 	add_action( 'admin_notices', 'alpha_single_product_for_elementor_duplicate_copy_notice' );
 
