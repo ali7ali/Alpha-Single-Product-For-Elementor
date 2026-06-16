@@ -687,8 +687,13 @@ class Alpha_SP_Widget extends Widget_Base {
 			return;
 		}
 
-		$cart_button_class   = isset( $settings['product_action_button_class'] ) ? $settings['product_action_button_class'] : '';
-		$cart_action_classes = 'class="sp-cart-button ' . esc_attr( $cart_button_class ) . '"';
+		$cart_button_classes = array_filter(
+			array_map(
+				'sanitize_html_class',
+				preg_split( '/\s+/', $settings['product_action_button_class'] ?? '' )
+			)
+		);
+		$cart_button_class   = implode( ' ', $cart_button_classes );
 
 		// Query Argument.
 		$args = array(
@@ -741,7 +746,7 @@ class Alpha_SP_Widget extends Widget_Base {
 									<h4 class="sp-product-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 									<div class="sp-product-price"><?php woocommerce_template_loop_price(); ?></div>
 								</div>
-								<div <?php echo esc_attr( $cart_action_classes ); ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
+								<div class="sp-cart-button <?php echo esc_attr( $cart_button_class ); ?>"><?php woocommerce_template_loop_add_to_cart(); ?></div>
 							</div>
 						<?php else : ?>
 							<div class="sp-product-action2">
@@ -749,7 +754,7 @@ class Alpha_SP_Widget extends Widget_Base {
 									<h4 class="sp-product-title2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 									<div class="sp-product-price2"><?php woocommerce_template_loop_price(); ?></div>
 								</div>
-								<div <?php echo esc_attr( $cart_action_classes ); ?>><?php woocommerce_template_loop_add_to_cart(); ?></div>
+								<div class="sp-cart-button <?php echo esc_attr( $cart_button_class ); ?>"><?php woocommerce_template_loop_add_to_cart(); ?></div>
 							</div>
 						<?php endif; ?>
 					</div>
