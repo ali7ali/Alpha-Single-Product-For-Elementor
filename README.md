@@ -1,13 +1,13 @@
 # Alpha Single Product For Elementor
 
 [![WordPress](https://img.shields.io/badge/WordPress-%E2%86%92-lightgrey.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin Last Updated](https://img.shields.io/wordpress/plugin/last-updated/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![Tested WP Version](https://img.shields.io/wordpress/plugin/tested/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
-[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/alpha-single-product-for-elementor?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![WordPress Plugin Last Updated](https://img.shields.io/wordpress/plugin/last-updated/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![Tested WP Version](https://img.shields.io/wordpress/plugin/tested/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/alpha-single-product-for-elementor.svg?style=flat-square)](https://wordpress.org/plugins/alpha-single-product-for-elementor/)
 
 ---
 
@@ -21,7 +21,7 @@
 **License**: GPLv3  
 **License URI**: [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
 
-AEasily display and customize a single WooCommerce product anywhere on your website using Elementor.
+Easily display and customize a single WooCommerce product anywhere on your website using Elementor.
 
 ---
 
@@ -95,7 +95,7 @@ For support, use the [WordPress.org forums](https://wordpress.org/support/plugin
 - Removed duplicate 'wc_add_to_cart_params' filter in render.
 - Switched to per-widget CSS loading (register + get_style_depends).
 - Added .editorconfig and .gitignore.
-- Added editor preview styles.
+- Removed the editor-only placeholder styling so the real product preview can render in Elementor.
 - Added PHPCS GitHub Actions workflow.
 
 ### 1.2.0

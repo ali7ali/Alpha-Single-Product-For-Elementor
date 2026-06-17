@@ -63,7 +63,7 @@ Manual Installation:
 * Removed duplicate 'wc_add_to_cart_params' filter in render.
 * Switched to per-widget CSS loading (register + get_style_depends).
 * Added .editorconfig and .gitignore.
-* Added editor preview styles.
+* Removed the editor-only placeholder styling so the real product preview can render in Elementor.
 * Added PHPCS and POT generation GitHub Actions workflows.
 
 = 1.2.0 =
