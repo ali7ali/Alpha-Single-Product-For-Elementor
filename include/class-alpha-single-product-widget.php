@@ -211,8 +211,10 @@ class Alpha_SP_Widget extends Widget_Base {
 			'product_image_size_width',
 			array(
 				'label'     => __( 'Width PX', 'alpha-single-product-for-elementor' ),
-				'type'      => Controls_Manager::TEXT,
-				'default'   => '300',
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 1,
+				'step'      => 1,
+				'default'   => 300,
 				'selectors' => array(
 					'{{WRAPPER}} .sp-product-image a img' => 'width: {{VALUE}}px;',
 					'{{WRAPPER}} .sp-product-action'      => 'max-width: {{VALUE}}px;',
@@ -225,8 +227,10 @@ class Alpha_SP_Widget extends Widget_Base {
 			'product_image_size_height',
 			array(
 				'label'     => __( 'Height PX', 'alpha-single-product-for-elementor' ),
-				'type'      => Controls_Manager::TEXT,
-				'default'   => '300',
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 1,
+				'step'      => 1,
+				'default'   => 300,
 				'selectors' => array(
 					'{{WRAPPER}} .sp-product-image a img' => 'height: {{VALUE}}px;',
 				),
