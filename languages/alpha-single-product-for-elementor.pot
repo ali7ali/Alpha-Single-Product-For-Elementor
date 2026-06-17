@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-17T03:51:43+00:00\n"
+"POT-Creation-Date: 2026-06-17T05:06:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: alpha-single-product-for-elementor\n"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: include/class-alpha-single-product-widget.php:129
 #: include/class-alpha-single-product-widget.php:134
-#: include/class-alpha-single-product-widget.php:786
+#: include/class-alpha-single-product-widget.php:790
 msgid "Select a product to display."
 msgstr ""
 
@@ -136,94 +136,94 @@ msgstr ""
 msgid "Width PX"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:227
+#: include/class-alpha-single-product-widget.php:229
 msgid "Height PX"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:242
+#: include/class-alpha-single-product-widget.php:246
 msgid "Style"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:259
-#: include/class-alpha-single-product-widget.php:517
+#: include/class-alpha-single-product-widget.php:263
+#: include/class-alpha-single-product-widget.php:521
 msgid "Border Radius"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:279
-#: include/class-alpha-single-product-widget.php:537
-#: include/class-alpha-single-product-widget.php:622
+#: include/class-alpha-single-product-widget.php:283
+#: include/class-alpha-single-product-widget.php:541
+#: include/class-alpha-single-product-widget.php:626
 msgid "Border Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:291
+#: include/class-alpha-single-product-widget.php:295
 msgid "Padding"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:303
-#: include/class-alpha-single-product-widget.php:362
-#: include/class-alpha-single-product-widget.php:417
+#: include/class-alpha-single-product-widget.php:307
+#: include/class-alpha-single-product-widget.php:366
+#: include/class-alpha-single-product-widget.php:421
 msgid "Margin"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:316
+#: include/class-alpha-single-product-widget.php:320
 msgid "Product Title"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:336
+#: include/class-alpha-single-product-widget.php:340
 msgid "Title Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:349
+#: include/class-alpha-single-product-widget.php:353
 msgid "Title Hover Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:384
+#: include/class-alpha-single-product-widget.php:388
 msgid "Product Price"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:393
+#: include/class-alpha-single-product-widget.php:397
 msgid "Price Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:441
+#: include/class-alpha-single-product-widget.php:445
 msgid "Action Button Style"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:449
+#: include/class-alpha-single-product-widget.php:453
 msgid "Button"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:463
+#: include/class-alpha-single-product-widget.php:467
 msgid "Normal"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:470
-#: include/class-alpha-single-product-widget.php:598
+#: include/class-alpha-single-product-widget.php:474
+#: include/class-alpha-single-product-widget.php:602
 msgid "Text Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:493
-#: include/class-alpha-single-product-widget.php:610
+#: include/class-alpha-single-product-widget.php:497
+#: include/class-alpha-single-product-widget.php:614
 msgid "Background Color"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:549
+#: include/class-alpha-single-product-widget.php:553
 msgid "Button Padding"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:569
+#: include/class-alpha-single-product-widget.php:573
 msgid "Button Margin"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:591
+#: include/class-alpha-single-product-widget.php:595
 msgid "Hover"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:644
+#: include/class-alpha-single-product-widget.php:648
 msgid "Select"
 msgstr ""
 
-#: include/class-alpha-single-product-widget.php:667
+#: include/class-alpha-single-product-widget.php:671
 msgid "Add to Cart"
 msgstr ""
 
